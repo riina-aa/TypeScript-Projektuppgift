@@ -12,6 +12,9 @@ $color-grey: #59605e;
 //Color variations
 $color-headeroverlay: color.scale(#caa872, $lightness: -50%); 
 $color-light-brown: color.scale(#caa872, $lightness: 20%); 
+$color-light-sage: color.scale(#7b8569, $lightness: 40%); 
+$color-lighter-sage: color.scale(#7b8569, $lightness: 60%); 
+$color-light-grey: color.scale(#59605e, $lightness: 30%);
 
 //Mixins
 @mixin h2-header() {

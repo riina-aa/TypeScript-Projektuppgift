@@ -10,6 +10,64 @@
 
     p {
         max-width: 60ch;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .level-explanation {
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        font-size: 14px;
+
+        p {
+            margin-bottom: 0.3rem;
+        }
+    }
+
+    table {
+        font-family: base.$fonts-text;
+
+        thead {
+            background-color: base.$color-sage;
+
+            th {
+                text-align: start;
+                padding: 0rem 0.5rem;
+            }
+        }
+
+        tbody {
+
+            td {
+                padding: 0.5rem;
+            }
+        }
+        
+        .firstCol {
+            background-color: base.$color-light-sage;
+        }
+
+        .addCol {
+            background-color: white;
+            color: white;
+        }
+
+        .data {
+            background-color: base.$color-lighter-sage;
+        }
+
+        .add-btn {
+            background-color: base.$color-light-grey;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            color: white; 
+            font-size: 20px;
+            font-weight: 600;
+
+            &:hover {
+                background-color: base.$color-grey;
+                cursor: pointer;
+            }
+        }
     }
 }

@@ -2,6 +2,10 @@
     <h2>Alla kurser</h2>
     <p>Här kan du söka och filtrera alla tillgängliga kurser. För att lägga till kurser på ditt schema så trycker du på
         plusikonen.</p>
+    <div class="level-explanation">
+        <p>GR = Grundläggande nivå</p>
+        <p>AV = Avancerad nivå</p>
+    </div>
     <div class="submenu">
         <div class="input">
             <input type="text" name="search" id="search">
@@ -22,10 +26,32 @@
             <th>Nivå</th>
             <th>Ämne</th>
             <th>Kursplan</th>
-            <th>Lägg till</th>
+            <th class="addCol">Lägg till</th>
         </thead>
         <tbody>
-            
+
+            @for (course of coursesService.courses(); track course.courseCode) {
+
+            <tr>
+                <td class="firstCol">{{ course.courseCode }}</td>
+                <td class="data">{{ course.courseName }}</td>
+                <td class="data">{{ course.points }}</td>
+                <td class="data">{{ course.level }}</td>
+                <td class="data">{{ course.subject }}</td>
+                <td class="data">
+                    <a [href]="course.syllabus" target="_blank">
+                        Kursplan
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="add-btn">+</button>
+                </td>
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="7">Inga kurser att visa.</td>
+            </tr>
+            }
         </tbody>
     </table>
 </section>
