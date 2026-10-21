@@ -12,3 +12,10 @@ $color-grey: #59605e;
 //Color variations
 $color-headeroverlay: color.scale(#caa872, $lightness: -50%); 
 $color-light-brown: color.scale(#caa872, $lightness: 20%); 
+
+//Mixins
+@mixin h2-header() {
+    font-family: $fonts-headers;
+    font-size: 38px;
+    font-weight: 400;
+}

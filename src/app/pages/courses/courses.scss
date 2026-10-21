@@ -1,0 +1,15 @@
+@use "../../scss/base.scss"; 
+
+.page {
+    padding: 4rem;
+
+    h2 {
+        @include base.h2-header(); 
+        margin-bottom: 1rem;
+    }
+
+    p {
+        max-width: 60ch;
+        margin-bottom: 0.5rem;
+    }
+}
