@@ -1,0 +1,27 @@
+@use "../../scss/base.scss";
+
+header {
+    background-image:
+        linear-gradient(
+            rgba(base.$color-headeroverlay, 0.5),
+            rgba(base.$color-headeroverlay, 0.5)),
+        url(/hero.png);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding: 5rem;
+    height: 700px;
+
+    h1 {
+        color: white;
+        font-size: 98px;
+        text-shadow: 1px 1px 20px base.$color-grey;
+    }
+
+    p {
+        font-size: 28px;
+        color: white;
+        text-shadow: 1px 1px 20px base.$color-grey;
+    }
+}

@@ -1,0 +1,33 @@
+@use "../../scss/base.scss";
+
+nav {
+    background-color: base.$color-brown;
+    padding: 0rem 2rem;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+
+        li {
+
+            a {
+                display: block;
+                padding: 1rem 2rem;
+                text-decoration: none;
+                color: black;
+                font-family: base.$fonts-text;
+                font-weight: 500;
+
+                &:hover {
+                    background-color: base.$color-light-brown;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.current {
+    background-color: white;
+}

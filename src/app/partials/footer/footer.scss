@@ -1,0 +1,15 @@
+@use "../../scss/base.scss"; 
+
+footer {
+    background-color: base.$color-brown;
+    padding: 5rem; 
+    text-align: center;
+
+    h3 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
