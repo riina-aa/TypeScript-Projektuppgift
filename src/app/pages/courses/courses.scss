@@ -159,17 +159,74 @@
         }
 
         .add-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
             background-color: base.$color-light-grey;
             border: none;
             padding: 0.3rem 1rem;
             border-radius: 50px;
             color: white;
-            font-size: 20px;
             font-weight: 600;
+
+            span {
+                font-size: 18px;
+            }
+
+            &.added {
+                background-color: base.$color-sage;
+
+                &:hover {
+                    background-color: base.$color-dark-sage;
+                }
+            }
 
             &:hover {
                 background-color: base.$color-grey;
                 cursor: pointer;
+            }
+        }
+    }
+
+    .pagination {
+        width: 100%;
+        margin-top: 3rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        font-family: base.$fonts-text;
+
+        button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+
+            background-color: base.$color-sage;
+            border: none;
+            border-radius: 15px;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            font-family: base.$fonts-text;
+
+            span {
+                font-size: 19px;
+            }
+
+            &:hover {
+                background-color: base.$color-dark-sage;
+                cursor: pointer;
+            }
+
+            &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
             }
         }
     }

@@ -99,14 +99,21 @@
             background-color: base.$color-lighter-sage;
         }
 
-        .add-btn {
+        .remove-btn {
             background-color: base.$color-light-grey;
             border: none;
             padding: 0.3rem 1rem;
             border-radius: 50px;
             color: white;
-            font-size: 20px;
             font-weight: 600;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                font-size: 18px;
+            }
 
             &:hover {
                 background-color: base.$color-grey;

@@ -31,7 +31,9 @@
                     </a>
                 </td>
                 <td>
-                    <button type="button" class="add-btn" (click)="removeFromSchedule(course.id)">-</button>
+                    <button type="button" class="remove-btn" (click)="removeFromSchedule(course.id)">
+                        <span class="material-symbols-outlined">remove</span>
+                    </button>
                 </td>
             </tr>
             } @empty {

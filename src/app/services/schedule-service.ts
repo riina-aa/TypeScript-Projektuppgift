@@ -44,12 +44,20 @@ export class ScheduleService {
     console.log("Inlästa kurser:", this.selectedCourses());
   };
 
+  //Ta bort kurs 
   removeCourse(id: number): void {
 
     this.selectedCourses.update(courses => courses.filter(course => course.id !== id)
-  ); 
+    );
 
-  this.saveCourses(); 
+    this.saveCourses();
   }
+
+  //Kollar om kursen finns bland de sparade kurserna
+  isCourseSelected(id: number): boolean {
+    return this.selectedCourses().some(
+        course => course.id === id
+    );
+}
 
 }

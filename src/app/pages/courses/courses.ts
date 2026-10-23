@@ -19,6 +19,8 @@ export class Courses implements OnInit {
   searchTerm = signal("");
   selectedSubject = signal("");
   selectedLevel = signal("");
+  currentPage = signal(1);
+  pageSize = 50;
 
   //Sorterar kurser
   sortedCourses = computed(() => {
@@ -47,9 +49,6 @@ export class Courses implements OnInit {
     const search = this.searchTerm().toLowerCase().trim();
     const subject = this.selectedSubject();
     const level = this.selectedLevel()
-
-    console.log("Valt ämne:", JSON.stringify(subject));
-    console.log("Vald nivå:", JSON.stringify(level));
 
     return courses.filter(course => {
 
@@ -86,6 +85,7 @@ export class Courses implements OnInit {
     this.coursesService.fetchCourses();
   }
 
+  //Sorterar kurser
   sortCourses(column: "courseCode" | "courseName" | "points" | "subject") {
 
     if (this.sortTable() === column) {
@@ -97,8 +97,57 @@ export class Courses implements OnInit {
     }
   }
 
-  addToSchedule(course: CourseWithId): void {
-    this.scheduleService.addCourse(course);
+  //Lägger till kurser i ramschema
+  toggleCourse(course: CourseWithId): void {
+    const isSelected = this.scheduleService.isCourseSelected(course.id); 
+
+    if (isSelected) {
+      this.scheduleService.removeCourse(course.id); 
+    } else {
+      this.scheduleService.addCourse(course);
+    }
+  }
+
+  //Sköter paginering
+  paginatedCourses = computed(() => {
+    const courses = this.sortedCourses();
+    const start = (this.currentPage() - 1) * this.pageSize;
+
+    return courses.slice(start, start + this.pageSize);
+  })
+
+  //Räknar ut totala antal sidor 
+  totalPages = computed(() => {
+    return Math.max(1, Math.ceil(this.sortedCourses().length / this.pageSize))
+  });
+
+  //Ändra till nästa sida
+  nextPage(): void {
+    if (this.currentPage() < this.totalPages()) {
+      this.currentPage.update(page => page + 1);
+    }
+  }
+
+  //Ändra till föregående sida
+  previousPage(): void {
+    if (this.currentPage() > 1) {
+      this.currentPage.update(page => page - 1);
+    }
+  }
+
+  updateSearch(value: string): void {
+    this.searchTerm.set(value);
+    this.currentPage.set(1);
+  }
+
+  updateSubject(value: string): void {
+    this.selectedSubject.set(value);
+    this.currentPage.set(1);
+  }
+
+  updateLevel(value: string): void {
+    this.selectedLevel.set(value);
+    this.currentPage.set(1);
   }
 
 }

@@ -17,12 +17,13 @@
     <div class="submenu">
         <div class="input">
             <input type="text" name="search" id="search" placeholder="Sök efter kurs..." [value]="searchTerm()"
-                (input)="searchTerm.set($any($event.target).value)" [class.active]="searchTerm() !== ''">
+                (input)="updateSearch($any($event.target).value)" [class.active]="searchTerm() !== ''">
             <span class="material-symbols-outlined search-icon">search</span>
         </div>
         <div class="filter">
             <select name="subject" id="subject" [value]="selectedSubject()"
-                (change)="selectedSubject.set($any($event.target).value)" [class.active]="selectedSubject() !== ''">
+                (change)="updateSubject($any($event.target).value)" [class.active]="selectedSubject() !== ''">
+
                 <option value="">Alla ämnen</option>
 
                 @for (subject of subjects(); track subject) {
@@ -32,8 +33,8 @@
             </select>
         </div>
         <div class="filter">
-            <select name="level" id="level" [value]="selectedLevel()"
-                (change)="selectedLevel.set($any($event.target).value)" [class.active]="selectedLevel() !== ''">
+            <select name="level" id="level" [value]="selectedLevel()" (change)="updateLevel($any($event.target).value)"
+                [class.active]="selectedLevel() !== ''">
                 <option value="">Alla nivåer</option>
                 @for (level of levels(); track level) {
                 <option [value]="level">{{ level }}</option>
@@ -57,7 +58,7 @@
         </thead>
         <tbody>
 
-            @for (course of sortedCourses(); track course.id) {
+            @for (course of paginatedCourses(); track course.id) {
 
             <tr>
                 <td class="firstCol">{{ course.courseCode }}</td>
@@ -71,7 +72,13 @@
                     </a>
                 </td>
                 <td>
-                    <button type="button" class="add-btn" (click)="addToSchedule(course)">+</button>
+                    <button type="button" class="add-btn" (click)="toggleCourse(course)" [class.added]="scheduleService.isCourseSelected(course.id)">
+                        @if (scheduleService.isCourseSelected(course.id)) {
+                        <span class="material-symbols-outlined">check</span>
+                        } @else {
+                        <span class="material-symbols-outlined">add</span>
+                        }
+                    </button>
                 </td>
             </tr>
             } @empty {
@@ -81,4 +88,15 @@
             }
         </tbody>
     </table>
+    <div class="pagination">
+        <button type="button" (click)="previousPage()" [disabled]="currentPage() <= 1">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Föregående sida
+        </button>
+        <span>{{ currentPage() }} av {{ totalPages() }}</span>
+        <button type="button" (click)="nextPage()" [disabled]="currentPage() >= totalPages()">
+            Nästa sida
+            <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+    </div>
 </section>

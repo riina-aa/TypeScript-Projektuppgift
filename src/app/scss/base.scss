@@ -17,6 +17,7 @@ $color-lighter-sage: color.scale(#7b8569, $lightness: 60%);
 $color-light-grey: color.scale(#59605e, $lightness: 30%);
 $color-medium-grey: color.scale(#59605e, $lightness: 15%);
 $color-lighter-grey: color.scale(#59605e, $lightness: 80%);
+$color-dark-sage: color.scale(#7b8569, $lightness: -30%); 
 
 //Mixins
 @mixin h2-header() {
