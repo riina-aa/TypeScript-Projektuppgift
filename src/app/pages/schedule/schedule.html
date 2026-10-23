@@ -1,1 +1,44 @@
-<p>schedule works!</p>
+<section class="page">
+    <h2>Mitt ramschema</h2>
+    <p>Här visas alla dina sparade kurser och du kan se hur din drömutbildning ser ut.</p>
+    <div class="schedule-summary">
+        <p>Antal kurser: {{ scheduleService.selectedCourses().length }}</p>
+        <p>Totalt antal högskolepoäng: {{ totalPoints() }} hp</p>
+    </div>
+    <table>
+        <thead>
+            <th class="clickable">Kurskod</th>
+            <th class="clickable">Kursnamn</th>
+            <th class="clickable">Poäng</th>
+            <th>Nivå</th>
+            <th class="clickable">Ämne</th>
+            <th>Kursplan</th>
+            <th class="addCol">Radera kurss</th>
+        </thead>
+        <tbody>
+
+            @for (course of scheduleService.selectedCourses(); track course.id) {
+
+            <tr>
+                <td class="firstCol">{{ course.courseCode }}</td>
+                <td class="data">{{ course.courseName }}</td>
+                <td class="data">{{ course.points }}</td>
+                <td class="data">{{ course.level }}</td>
+                <td class="data">{{ course.subject }}</td>
+                <td class="data">
+                    <a [href]="course.syllabus" target="_blank">
+                        Kursplan
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="add-btn" (click)="removeFromSchedule(course.id)">-</button>
+                </td>
+            </tr>
+            } @empty {
+            <tr>
+                <td colspan="7">Du har inte lagt till några kurser än.</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</section>

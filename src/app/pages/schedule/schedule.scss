@@ -1,0 +1,117 @@
+@use "../../scss/base.scss"; 
+
+.page {
+    padding: 4rem;
+
+    h2 {
+        @include base.h2-header();
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 2rem;
+    }
+
+    .schedule-summary {
+        margin-bottom: 1rem;
+        
+        p {
+            margin-bottom: 0.3rem;
+            font-size: 14px;
+        }
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+
+        font-family: base.$fonts-text;
+
+        th:nth-child(1) {
+            width: 8%;
+        }
+
+        // Kurskod
+        th:nth-child(2) {
+            width: 41%;
+        }
+
+        // Kursnamn
+        th:nth-child(3) {
+            width: 5%;
+        }
+
+        // Poäng
+        th:nth-child(4) {
+            width: 4%;
+        }
+
+        // Nivå
+        th:nth-child(5) {
+            width: 30%;
+        }
+
+        // Ämne
+        th:nth-child(6) {
+            width: 7%;
+        }
+
+        // Kursplan
+        th:nth-child(7) {
+            width: 5%;
+        }
+
+        // Lägg till
+
+        thead {
+            background-color: base.$color-sage;
+
+            th {
+                text-align: start;
+                padding: 0rem 0.5rem;
+            }
+
+            .clickable {
+                &:hover {
+                    background-color: base.$color-light-grey;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        tbody {
+
+            td {
+                padding: 0.5rem;
+            }
+        }
+
+        .firstCol {
+            background-color: base.$color-light-sage;
+        }
+
+        .addCol {
+            background-color: white;
+            color: white;
+        }
+
+        .data {
+            background-color: base.$color-lighter-sage;
+        }
+
+        .add-btn {
+            background-color: base.$color-light-grey;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+
+            &:hover {
+                background-color: base.$color-grey;
+                cursor: pointer;
+            }
+        }
+    }
+}

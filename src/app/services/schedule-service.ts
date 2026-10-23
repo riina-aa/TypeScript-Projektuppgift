@@ -44,4 +44,12 @@ export class ScheduleService {
     console.log("Inlästa kurser:", this.selectedCourses());
   };
 
+  removeCourse(id: number): void {
+
+    this.selectedCourses.update(courses => courses.filter(course => course.id !== id)
+  ); 
+
+  this.saveCourses(); 
+  }
+
 }
