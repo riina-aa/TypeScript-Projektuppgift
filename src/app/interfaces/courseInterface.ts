@@ -6,3 +6,7 @@ export interface Course {
     subject: string, 
     syllabus: string
 }
+
+export interface CourseWithId extends Course {
+    id: number; 
+}

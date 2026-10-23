@@ -1,10 +1,10 @@
-@use "../../scss/base.scss"; 
+@use "../../scss/base.scss";
 
 .page {
     padding: 4rem;
 
     h2 {
-        @include base.h2-header(); 
+        @include base.h2-header();
         margin-bottom: 1rem;
     }
 
@@ -14,6 +14,9 @@
     }
 
     .level-explanation {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
         margin-top: 0.5rem;
         margin-bottom: 2rem;
         font-size: 14px;
@@ -23,8 +26,101 @@
         }
     }
 
+    .submenu {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        .input {
+            position: relative;
+
+            input {
+                border: 3px solid base.$color-medium-grey;
+                border-radius: 15px;
+                background-color: white;
+
+                padding: 0.5rem 3rem;
+                font-family: base.$fonts-text;
+                width: 50ch;
+
+                &.active {
+                    background-color: base.$color-lighter-grey;
+                }
+            }
+
+            .search-icon {
+                position: absolute;
+                top: 0.6rem;
+                left: 1rem;
+                color: base.$color-medium-grey;
+            }
+        }
+
+
+
+        select {
+            border: 3px solid base.$color-medium-grey;
+            border-radius: 15px;
+            background-color: white;
+
+            padding: 0.5rem 1rem;
+            font-family: base.$fonts-text;
+
+            &.active {
+                background-color: base.$color-lighter-grey;
+            }
+        }
+    }
+
+    .course-count {
+        p {
+            font-style: italic;
+            font-size: 14px;
+        }
+    }
+
     table {
+        width: 100%;
+        table-layout: fixed;
+
         font-family: base.$fonts-text;
+
+        th:nth-child(1) {
+            width: 8%;
+        }
+
+        // Kurskod
+        th:nth-child(2) {
+            width: 41%;
+        }
+
+        // Kursnamn
+        th:nth-child(3) {
+            width: 5%;
+        }
+
+        // Poäng
+        th:nth-child(4) {
+            width: 4%;
+        }
+
+        // Nivå
+        th:nth-child(5) {
+            width: 30%;
+        }
+
+        // Ämne
+        th:nth-child(6) {
+            width: 7%;
+        }
+
+        // Kursplan
+        th:nth-child(7) {
+            width: 5%;
+        }
+
+        // Lägg till
 
         thead {
             background-color: base.$color-sage;
@@ -32,6 +128,13 @@
             th {
                 text-align: start;
                 padding: 0rem 0.5rem;
+            }
+
+            .clickable {
+                &:hover {
+                    background-color: base.$color-light-grey;
+                    cursor: pointer;
+                }
             }
         }
 
@@ -41,7 +144,7 @@
                 padding: 0.5rem;
             }
         }
-        
+
         .firstCol {
             background-color: base.$color-light-sage;
         }
@@ -60,7 +163,7 @@
             border: none;
             padding: 0.3rem 1rem;
             border-radius: 50px;
-            color: white; 
+            color: white;
             font-size: 20px;
             font-weight: 600;
 

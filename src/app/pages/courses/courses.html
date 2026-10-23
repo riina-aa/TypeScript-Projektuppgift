@@ -3,34 +3,61 @@
     <p>Här kan du söka och filtrera alla tillgängliga kurser. För att lägga till kurser på ditt schema så trycker du på
         plusikonen.</p>
     <div class="level-explanation">
-        <p>GR = Grundläggande nivå</p>
-        <p>AV = Avancerad nivå</p>
+        <div class="col1">
+            <p>GR = Grundläggande nivå</p>
+            <p>AV = Avancerad nivå</p>
+            <p>FO = Forskarnivå</p>
+        </div>
+        <div class="col2">
+            <p>BE = Behörighetsgivande nivå</p>
+            <p>X = Övrigt / ej specificerad nivå</p>
+        </div>
+
     </div>
     <div class="submenu">
         <div class="input">
-            <input type="text" name="search" id="search">
+            <input type="text" name="search" id="search" placeholder="Sök efter kurs..." [value]="searchTerm()"
+                (input)="searchTerm.set($any($event.target).value)" [class.active]="searchTerm() !== ''">
+            <span class="material-symbols-outlined search-icon">search</span>
         </div>
         <div class="filter">
-            <select name="type" id="type"></select>
+            <select name="subject" id="subject" [value]="selectedSubject()"
+                (change)="selectedSubject.set($any($event.target).value)" [class.active]="selectedSubject() !== ''">
+                <option value="">Alla ämnen</option>
+
+                @for (subject of subjects(); track subject) {
+                <option [value]="subject">{{ subject }}</option>
+                }
+
+            </select>
         </div>
         <div class="filter">
-            <select name="level" id="level"></select>
+            <select name="level" id="level" [value]="selectedLevel()"
+                (change)="selectedLevel.set($any($event.target).value)" [class.active]="selectedLevel() !== ''">
+                <option value="">Alla nivåer</option>
+                @for (level of levels(); track level) {
+                <option [value]="level">{{ level }}</option>
+                }
+            </select>
         </div>
     </div>
-    <div class="course-count"></div>
+    <div class="course-count">
+        <p><strong>Just nu visas: </strong>{{ filteredCourses().length }} av {{ coursesService.courses().length }}
+            kurser</p>
+    </div>
     <table>
         <thead>
-            <th>Kurskod</th>
-            <th>Kursnamn</th>
-            <th>Poäng</th>
+            <th class="clickable" (click)="sortCourses('courseCode')">Kurskod</th>
+            <th class="clickable" (click)="sortCourses('courseName')">Kursnamn</th>
+            <th class="clickable" (click)="sortCourses('points')">Poäng</th>
             <th>Nivå</th>
-            <th>Ämne</th>
+            <th class="clickable" (click)="sortCourses('subject')">Ämne</th>
             <th>Kursplan</th>
             <th class="addCol">Lägg till</th>
         </thead>
         <tbody>
 
-            @for (course of coursesService.courses(); track course.courseCode) {
+            @for (course of sortedCourses(); track course.id) {
 
             <tr>
                 <td class="firstCol">{{ course.courseCode }}</td>
@@ -44,7 +71,7 @@
                     </a>
                 </td>
                 <td>
-                    <button type="button" class="add-btn">+</button>
+                    <button type="button" class="add-btn" (click)="addToSchedule(course)">+</button>
                 </td>
             </tr>
             } @empty {
