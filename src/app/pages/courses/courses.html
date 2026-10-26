@@ -61,17 +61,17 @@
             @for (course of paginatedCourses(); track course.id) {
 
             <tr>
-                <td class="firstCol">{{ course.courseCode }}</td>
-                <td class="data">{{ course.courseName }}</td>
-                <td class="data">{{ course.points }}</td>
-                <td class="data">{{ course.level }}</td>
-                <td class="data">{{ course.subject }}</td>
-                <td class="data">
+                <td data-label="Kurskod" class="firstCol">{{ course.courseCode }}</td>
+                <td data-label="Kursnamn" class="data">{{ course.courseName }}</td>
+                <td data-label="Poäng" class="data">{{ course.points }}</td>
+                <td data-label="Nivå" class="data">{{ course.level }}</td>
+                <td data-label="Ämne" class="data">{{ course.subject }}</td>
+                <td data-label="Kursplan" class="data">
                     <a [href]="course.syllabus" target="_blank">
                         Kursplan
                     </a>
                 </td>
-                <td>
+                <td data-label="Lägg till">
                     <button type="button" class="add-btn" (click)="toggleCourse(course)" [class.added]="scheduleService.isCourseSelected(course.id)">
                         @if (scheduleService.isCourseSelected(course.id)) {
                         <span class="material-symbols-outlined">check</span>

@@ -2,8 +2,7 @@
 
 header {
     background-image:
-        linear-gradient(
-            rgba(base.$color-headeroverlay, 0.5),
+        linear-gradient(rgba(base.$color-headeroverlay, 0.5),
             rgba(base.$color-headeroverlay, 0.5)),
         url(/hero.png);
     background-position: top right;
@@ -23,5 +22,36 @@ header {
         font-size: 28px;
         color: white;
         text-shadow: 1px 1px 20px base.$color-grey;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    header {
+        height: 500px;
+
+        h1 {
+            font-size: 80px;
+        }
+
+        p {
+            font-size: 22px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 5rem 3rem;
+        height: 400px;
+
+        h1 {
+            font-size: 46px;
+        }
+
+        p {
+            font-size: 18px;
+        }
     }
 }

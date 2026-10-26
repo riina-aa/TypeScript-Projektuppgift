@@ -31,3 +31,10 @@ nav {
 .current {
     background-color: white;
 }
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 0rem 1.5rem;
+    }
+}

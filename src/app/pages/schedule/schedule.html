@@ -20,17 +20,17 @@
             @for (course of scheduleService.selectedCourses(); track course.id) {
 
             <tr>
-                <td class="firstCol">{{ course.courseCode }}</td>
-                <td class="data">{{ course.courseName }}</td>
-                <td class="data">{{ course.points }}</td>
-                <td class="data">{{ course.level }}</td>
-                <td class="data">{{ course.subject }}</td>
-                <td class="data">
+                <td data-label="Kurskod" class="firstCol">{{ course.courseCode }}</td>
+                <td data-label="Kursnam" class="data">{{ course.courseName }}</td>
+                <td data-label="Poäng" class="data">{{ course.points }}</td>
+                <td data-label="Nivå" class="data">{{ course.level }}</td>
+                <td data-label="Poäng" class="data">{{ course.subject }}</td>
+                <td  data-label="Kursplan"class="data">
                     <a [href]="course.syllabus" target="_blank">
                         Kursplan
                     </a>
                 </td>
-                <td>
+                <td data-label="Lägg till">
                     <button type="button" class="remove-btn" (click)="removeFromSchedule(course.id)">
                         <span class="material-symbols-outlined">remove</span>
                     </button>

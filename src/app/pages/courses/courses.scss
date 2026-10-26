@@ -231,3 +231,61 @@
         }
     }
 }
+
+@media (max-width: 1024px) {
+
+    .page {
+        padding: 4rem 2rem;
+
+        .submenu {
+            flex-direction: column;
+        }
+
+        table {
+            width: 100%;
+            table-layout: auto;
+
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: block;
+
+                tr {
+                    display: block;
+                    margin-bottom: 1rem;
+                    padding: 1rem;
+                    border-radius: 10px;
+                    background-color: base.$color-lighter-sage;
+
+                    td {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 1rem;
+                        width: 100%;
+                        padding: 0.5rem 0;
+                        overflow-wrap: anywhere;
+
+                        &::before {
+                            content: attr(data-label);
+                            font-weight: 600;
+                            flex-shrink: 0;
+                        }
+                    }
+                }
+            }
+
+            .firstCol,
+            .data,
+            .addCol {
+                background-color: transparent;
+            }
+
+            .add-btn {
+                margin-left: auto;
+            }
+        }
+    }
+}
