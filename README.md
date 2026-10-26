@@ -11,5 +11,9 @@ Jag har lagt till paginering i den färdiga lösningen.
 
 ### 🔗 Länk till publicerad lösning 🔗
 Projektet är publicerad genom Netlify: https://snazzy-otter-e365e0.netlify.app/courses 
+När jag följer länken härifrån repot så fungerar inte länken. Men den är publicerad via Netlify och är aktiv. Från Netlify går det att följa länken utan problem. 
+<img width="655" height="267" alt="image" src="https://github.com/user-attachments/assets/7f2e0b25-213b-444e-8272-725c20acb638" />
+Jag hoppas att det går att få fram länken under rättningen. 
+
 
 #### //Riina Aaltonen
